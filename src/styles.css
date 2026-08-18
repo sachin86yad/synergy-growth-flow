@@ -5,6 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
+ * XYZ SERVICES design system.
+ * Single accent (signal teal) on a near-black surface stack.
+ * Every color, shadow, and radius used by components lives here as a token.
+ */
+
+/*
  * Design system definition.
  *
  * The @theme inline block maps CSS custom properties to Tailwind utility
