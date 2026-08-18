@@ -15,7 +15,7 @@ const variants = {
 } as const;
 
 type CtaProps = {
-  to: ComponentProps<typeof Link>["to"];
+  to: string;
   children: ReactNode;
   variant?: keyof typeof variants;
   className?: string;
@@ -24,7 +24,11 @@ type CtaProps = {
 
 export function Cta({ to, children, variant = "primary", className, onClick }: CtaProps) {
   return (
-    <Link to={to} onClick={onClick} className={cn(base, variants[variant], className)}>
+    <Link
+      to={to as ComponentProps<typeof Link>["to"]}
+      {...(onClick ? { onClick } : {})}
+      className={cn(base, variants[variant], className)}
+    >
       {children}
     </Link>
   );
