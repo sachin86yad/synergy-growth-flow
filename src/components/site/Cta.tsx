@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -25,7 +25,7 @@ type CtaProps = {
 export function Cta({ to, children, variant = "primary", className, onClick }: CtaProps) {
   return (
     <Link
-      to={to as ComponentProps<typeof Link>["to"]}
+      to={to as "/"}
       {...(onClick ? { onClick } : {})}
       className={cn(base, variants[variant], className)}
     >
