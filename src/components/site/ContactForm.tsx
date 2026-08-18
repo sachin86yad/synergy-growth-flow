@@ -1,6 +1,6 @@
 import { useServerFn } from "@tanstack/react-start";
 import { CheckCircle2, Loader2, TriangleAlert } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 import { BUDGET_OPTIONS, SERVICE_OPTIONS } from "@/config/site";
 import { submitEnquiry } from "@/lib/contact.functions";
@@ -15,6 +15,9 @@ export function ContactForm() {
   const send = useServerFn(submitEnquiry);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  // Until React has hydrated, a click would trigger a native form navigation.
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -148,7 +151,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        disabled={status === "loading"}
+        disabled={status === "loading" || !ready}
         className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-accent px-6 text-sm font-semibold text-accent-foreground transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
         {status === "loading" && <Loader2 className="size-4 animate-spin" aria-hidden />}
