@@ -27,7 +27,7 @@ function PrivacyPage() {
           Placeholder policy — review with a legal advisor before publishing.
         </p>
 
-        <div className="mt-10 space-y-8 text-muted-foreground">
+        <div className="mt-8 space-y-8 text-muted-foreground">
           <div>
             <h2 className="text-[length:var(--text-title)] font-semibold text-foreground">
               What we collect

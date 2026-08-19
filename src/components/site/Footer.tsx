@@ -12,7 +12,7 @@ const socials = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
-      <div className="container-page grid gap-12 py-14 md:grid-cols-[1.4fr_1fr_1fr] md:py-16">
+      <div className="container-page grid gap-10 py-10 md:grid-cols-[1.4fr_1fr_1fr] md:py-12">
         <div>
           <p className="flex items-center gap-2.5 text-sm font-semibold tracking-[0.14em] uppercase">
             <span aria-hidden className="size-2.5 rounded-sm bg-accent" />

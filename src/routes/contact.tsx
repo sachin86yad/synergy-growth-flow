@@ -24,7 +24,7 @@ function ContactPage() {
   return (
     <>
       <section className="border-b border-border">
-        <div className="container-page py-16 md:py-20">
+        <div className="container-page py-10 md:py-14">
           <Reveal className="max-w-3xl">
             <p className="eyebrow">Contact</p>
             <h1 className="mt-4 text-[length:var(--text-display)] font-semibold">
