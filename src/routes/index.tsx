@@ -58,7 +58,7 @@ function HomePage() {
           aria-hidden
           className="hairline-grid pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]"
         />
-        <div className="container-page relative grid items-center gap-10 py-8 md:py-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 xl:py-20">
+        <div className="container-page relative grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <Reveal>
             <p className="eyebrow">WEB • AI • AUTOMATION • GROWTH</p>
             <h1 className="mt-5 text-[length:var(--text-hero)] font-semibold">
