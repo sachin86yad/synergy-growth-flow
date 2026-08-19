@@ -23,7 +23,7 @@ function AboutPage() {
   return (
     <>
       <section className="border-b border-border">
-        <div className="container-page py-16 md:py-20">
+        <div className="container-page py-10 md:py-14">
           <Reveal className="max-w-3xl">
             <p className="eyebrow">About</p>
             <h1 className="mt-4 text-[length:var(--text-display)] font-semibold">
@@ -37,7 +37,7 @@ function AboutPage() {
       </section>
 
       <section className="section-y">
-        <div className="container-page grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
+        <div className="container-page grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <Reveal>
             <h2 className="text-[length:var(--text-title)] font-semibold">Who we help</h2>
             <ul className="mt-5 space-y-2.5 text-muted-foreground">
@@ -77,7 +77,7 @@ function AboutPage() {
       <section className="border-y border-border bg-surface section-y">
         <div className="container-page">
           <h2 className="text-[length:var(--text-display)] font-semibold">How we build</h2>
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {TRUST_POINTS.map((point, index) => (
               <Reveal as="li" key={point.title} delay={index * 60}>
                 <div className="h-full rounded-lg border border-border bg-card p-5">
@@ -87,7 +87,7 @@ function AboutPage() {
               </Reveal>
             ))}
           </ul>
-          <div className="mt-10">
+          <div className="mt-8">
             <Cta to="/contact">Book a Free Consultation</Cta>
           </div>
         </div>

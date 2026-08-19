@@ -25,7 +25,7 @@ function ProcessPage() {
   return (
     <>
       <section className="border-b border-border">
-        <div className="container-page py-16 md:py-20">
+        <div className="container-page py-10 md:py-14">
           <Reveal className="max-w-3xl">
             <p className="eyebrow">Process</p>
             <h1 className="mt-4 text-[length:var(--text-display)] font-semibold">
@@ -69,10 +69,10 @@ function ProcessPage() {
               A complete, documented system — not a design file and a login you can't use.
             </p>
           </Reveal>
-          <Reveal className="mt-10" delay={100}>
+          <Reveal className="mt-8" delay={100}>
             <FlowChain nodes={GROWTH_CHAIN} />
           </Reveal>
-          <div className="mt-10">
+          <div className="mt-8">
             <Cta to="/contact">Book a Free Consultation</Cta>
           </div>
         </div>

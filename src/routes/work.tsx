@@ -24,7 +24,7 @@ function WorkPage() {
   return (
     <>
       <section className="border-b border-border">
-        <div className="container-page py-16 md:py-20">
+        <div className="container-page py-10 md:py-14">
           <Reveal className="max-w-3xl">
             <p className="eyebrow">Work</p>
             <h1 className="mt-4 text-[length:var(--text-display)] font-semibold">
@@ -41,7 +41,7 @@ function WorkPage() {
 
       <div className="container-page divide-y divide-border">
         {PROJECTS.map((project) => (
-          <article key={project.slug} id={project.slug} className="scroll-mt-24 py-12 md:py-16">
+          <article key={project.slug} id={project.slug} className="scroll-mt-24 py-8 md:py-10">
             <Reveal className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
               <div>
                 <span className="w-fit rounded-sm border border-accent/40 px-2 py-1 text-[0.6875rem] font-semibold tracking-[0.12em] text-accent uppercase">

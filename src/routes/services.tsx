@@ -25,7 +25,7 @@ function ServicesPage() {
   return (
     <>
       <section className="border-b border-border">
-        <div className="container-page py-16 md:py-20">
+        <div className="container-page py-10 md:py-14">
           <Reveal className="max-w-3xl">
             <p className="eyebrow">Services</p>
             <h1 className="mt-4 text-[length:var(--text-display)] font-semibold">
@@ -41,7 +41,7 @@ function ServicesPage() {
 
       <div className="container-page divide-y divide-border">
         {SERVICES.map((service) => (
-          <section key={service.slug} id={service.slug} className="scroll-mt-24 py-12 md:py-16">
+          <section key={service.slug} id={service.slug} className="scroll-mt-24 py-8 md:py-10">
             <Reveal className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
               <div>
                 <span className="grid size-11 place-items-center rounded-md border border-border bg-card text-accent">

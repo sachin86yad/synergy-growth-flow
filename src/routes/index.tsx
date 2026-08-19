@@ -58,7 +58,7 @@ function HomePage() {
           aria-hidden
           className="hairline-grid pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]"
         />
-        <div className="container-page relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 xl:py-28">
+        <div className="container-page relative grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <Reveal>
             <p className="eyebrow">WEB • AI • AUTOMATION • GROWTH</p>
             <h1 className="mt-5 text-[length:var(--text-hero)] font-semibold">
@@ -68,7 +68,7 @@ function HomePage() {
               We build high-converting websites, AI-powered experiences and automated growth
               systems that help businesses attract, convert and retain more customers.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Cta to="/contact">
                 Book a Free Consultation
                 <ArrowRight className="size-4" aria-hidden />
@@ -91,7 +91,7 @@ function HomePage() {
 
       {/* Trust */}
       <section className="border-b border-border bg-surface">
-        <div className="container-page py-12 md:py-14">
+        <div className="container-page py-10 md:py-12">
           <h2 className="text-sm font-semibold tracking-[0.18em] text-muted-foreground uppercase">
             How we build
           </h2>
@@ -116,7 +116,7 @@ function HomePage() {
         title="Everything needed to get found, convert and follow up"
         lead="Six focused capabilities that work as one system — not disconnected deliverables."
       >
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, index) => (
             <Reveal key={service.slug} delay={index * 60} className="h-full">
               <ServiceCard service={service} />
@@ -139,7 +139,7 @@ function HomePage() {
               someone remembering to follow up.
             </p>
           </Reveal>
-          <Reveal className="mt-12" delay={100}>
+          <Reveal className="mt-8" delay={100}>
             <FlowChain nodes={GROWTH_CHAIN} />
           </Reveal>
         </div>
@@ -151,7 +151,7 @@ function HomePage() {
         title="Turn repetitive work into automated workflows."
         lead="If your team does it the same way every time, it can be automated — with AI making the judgement calls that used to need a human."
       >
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
           <Reveal>
             <ul className="grid gap-3 sm:grid-cols-2">
               {AUTOMATION_USE_CASES.map((useCase) => (
@@ -182,7 +182,7 @@ function HomePage() {
 
       {/* Chatbot */}
       <section className="border-y border-border bg-surface section-y">
-        <div className="container-page grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
+        <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
           <Reveal>
             <p className="eyebrow">AI chatbots</p>
             <h2 className="mt-4 text-[length:var(--text-display)] font-semibold">
@@ -217,7 +217,7 @@ function HomePage() {
         title="How we work"
         lead="Five stages, each with a clear output you can review before the next one starts."
       >
-        <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
           {PROCESS_STEPS.map((step, index) => (
             <Reveal as="li" key={step.step} delay={index * 70}>
               <div className="h-full rounded-lg border border-border bg-card p-5 transition-colors hover:border-accent/50 hover:bg-card-hover">
@@ -248,7 +248,7 @@ function HomePage() {
               show exactly how we structure a site, a chatbot and the automation behind it.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
             {PROJECTS.map((project, index) => (
               <Reveal key={project.slug} delay={index * 70} className="h-full">
                 <article className="flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-accent/50 hover:bg-card-hover">
@@ -286,7 +286,7 @@ function HomePage() {
 
       {/* Pricing */}
       <Section eyebrow="Pricing" title="Every business is different.">
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
           <Reveal>
             <p className="measure text-[length:var(--text-body-lg)] text-muted-foreground">
               We don't publish fixed packages, because a five-page site with one form and a site
@@ -342,7 +342,7 @@ function HomePage() {
             Tell us what you're trying to build, automate or grow. We'll help you figure out the
             right approach.
           </p>
-          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <Cta to="/contact">Book a Free Consultation</Cta>
             <Cta to="/contact" variant="outline">
               Contact Us
