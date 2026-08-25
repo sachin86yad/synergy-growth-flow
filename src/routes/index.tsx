@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 
 import { ChatbotDemo } from "@/components/site/ChatbotDemo";
+import { ChatWidget } from "@/components/site/ChatWidget";
 import { Cta } from "@/components/site/Cta";
 import { Faq } from "@/components/site/Faq";
 import { FlowChain } from "@/components/site/FlowChain";
@@ -350,6 +351,8 @@ function HomePage() {
           </div>
         </Reveal>
       </Section>
+
+      <ChatWidget />
     </>
   );
 }
