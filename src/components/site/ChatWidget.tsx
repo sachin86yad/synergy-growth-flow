@@ -21,7 +21,7 @@ import { BRAND } from "@/config/site";
 import { CONTACT_DETAILS } from "@/config/knowledge";
 import { cn } from "@/lib/utils";
 
-const STORAGE_KEY = "xyz-assistant-conversation";
+const STORAGE_KEY = "nexweb-assistant-conversation";
 
 const GREETING =
   `Hi! I'm the ${BRAND.name} assistant. Ask me about our services, pricing or timelines — ` +
@@ -62,7 +62,7 @@ function readStored(): StoredMessage[] {
   }
 }
 
-/** Floating AI assistant, grounded in the XYZ SERVICES knowledge base. */
+/** Floating AI assistant, grounded in the NexWeb Solutions knowledge base. */
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
@@ -77,7 +77,7 @@ export function ChatWidget() {
   }, []);
 
   const { messages, sendMessage, status, setMessages, stop } = useChat({
-    id: "xyz-assistant",
+    id: "nexweb-assistant",
     messages: initialMessages.map((message) => ({
       id: message.id,
       role: message.role,

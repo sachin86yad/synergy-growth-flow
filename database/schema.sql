@@ -1,4 +1,4 @@
--- XYZ SERVICES — initial database schema (PostgreSQL)
+-- NexWeb Solutions — initial database schema (PostgreSQL)
 -- Applied to the managed database; kept here for portability and review.
 -- MySQL note: replace gen_random_uuid()/uuid with CHAR(36)+application UUIDs,
 -- TIMESTAMPTZ with DATETIME, and the regex CHECK with application validation.
