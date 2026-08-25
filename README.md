@@ -1,4 +1,4 @@
-# XYZ SERVICES — Digital Growth, Web Development & AI Automation Agency
+# NexWeb Solutions — Digital Growth, Web Development & AI Automation Agency
 
 Production-quality marketing site with a working enquiry pipeline: website → form →
 validated API → PostgreSQL → optional n8n automation.
@@ -80,8 +80,8 @@ The schema is already applied to the managed PostgreSQL database. To recreate it
 elsewhere:
 
 ```bash
-createdb xyz_services
-psql -d xyz_services -f database/schema.sql
+createdb nexweb_solutions
+psql -d nexweb_solutions -f database/schema.sql
 ```
 
 `contact_submissions` columns: `id`, `name`, `business_name`, `email`, `phone`,
