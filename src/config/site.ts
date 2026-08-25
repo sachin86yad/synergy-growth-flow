@@ -13,7 +13,7 @@ import {
  * Rename the business by editing BRAND.name only — every surface reads from here.
  */
 export const BRAND = {
-  name: "XYZ SERVICES",
+  name: "NexWeb Solutions",
   tagline: "Web Development • AI • Automation • Growth",
   description:
     "We help businesses build a strong online presence, generate more leads, and automate repetitive business processes using websites, AI, automation, SEO and paid advertising.",
