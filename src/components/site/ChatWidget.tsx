@@ -63,6 +63,20 @@ function readStored(): StoredMessage[] {
   }
 }
 
+/** Smoothly pins the transcript to the newest message whenever `trigger` changes. */
+function StickToLatest({ trigger }: { trigger: string }) {
+  const { scrollToBottom } = useStickToBottomContext();
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      void scrollToBottom({ animation: "smooth" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [trigger, scrollToBottom]);
+
+  return null;
+}
+
 /** Floating AI assistant, grounded in the NexWeb Solutions knowledge base. */
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
