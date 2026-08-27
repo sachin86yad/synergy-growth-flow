@@ -71,6 +71,27 @@ export function ChatWidget() {
   const [error, setError] = useState<string | null>(null);
   const [initialMessages, setInitialMessages] = useState<StoredMessage[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const composerRef = useRef<HTMLDivElement | null>(null);
+  const [composerHeight, setComposerHeight] = useState(0);
+
+  // Keep the panel above the Android/iOS virtual keyboard.
+  const { height: viewportHeight, keyboardInset } = useVisualViewport(open);
+
+  // Measure the composer so the scroll area always reserves room for it.
+  useEffect(() => {
+    const node = composerRef.current;
+    if (!node || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(() => setComposerHeight(node.offsetHeight));
+    observer.observe(node);
+    setComposerHeight(node.offsetHeight);
+    return () => observer.disconnect();
+  }, [open]);
+
+  const launcherGap = 88; // clears the floating launcher button
+  const bottomOffset = keyboardInset > 0 ? keyboardInset + 12 : launcherGap;
+  const panelMaxHeight = viewportHeight
+    ? Math.max(240, viewportHeight - bottomOffset - 16)
+    : undefined;
 
   useEffect(() => {
     setInitialMessages(readStored());
