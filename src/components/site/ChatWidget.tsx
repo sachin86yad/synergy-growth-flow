@@ -19,6 +19,7 @@ import {
 import { Shimmer } from "@/components/ai-elements/shimmer";
 import { BRAND } from "@/config/site";
 import { CONTACT_DETAILS } from "@/config/knowledge";
+import { useVisualViewport } from "@/hooks/use-visual-viewport";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "nexweb-assistant-conversation";
