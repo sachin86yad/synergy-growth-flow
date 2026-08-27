@@ -282,7 +282,16 @@ export function ChatWidget() {
             <ConversationScrollButton />
           </Conversation>
 
-          <div className="border-t border-border bg-surface px-3 py-3">
+          <div
+            ref={composerRef}
+            className="shrink-0 border-t border-border bg-surface px-3 pt-3"
+            style={{
+              paddingBottom:
+                keyboardInset > 0
+                  ? 12
+                  : "calc(0.75rem + env(safe-area-inset-bottom, 0px))",
+            }}
+          >
             <PromptInput
               onSubmit={(_message, event) => {
                 event.preventDefault();
