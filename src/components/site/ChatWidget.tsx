@@ -221,8 +221,11 @@ export function ChatWidget() {
             </button>
           </header>
 
-          <Conversation className="flex-1">
-            <ConversationContent className="gap-3 px-3 py-4">
+          <Conversation className="min-h-0 flex-1 overscroll-contain [-webkit-overflow-scrolling:touch]">
+            <ConversationContent
+              className="gap-3 px-3 pt-4"
+              style={{ paddingBottom: 16, scrollPaddingBottom: composerHeight + 16 }}
+            >
               <Message from="assistant">
                 <MessageContent>
                   <MessageResponse>{GREETING}</MessageResponse>
