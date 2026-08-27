@@ -3,6 +3,7 @@ import { DefaultChatTransport } from "ai";
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageSquare, Phone, RotateCcw, Sparkle, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useStickToBottomContext } from "use-stick-to-bottom";
 
 import {
   Conversation,
@@ -19,6 +20,7 @@ import {
 import { Shimmer } from "@/components/ai-elements/shimmer";
 import { BRAND } from "@/config/site";
 import { CONTACT_DETAILS } from "@/config/knowledge";
+import { useVisualViewport } from "@/hooks/use-visual-viewport";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "nexweb-assistant-conversation";
@@ -62,6 +64,20 @@ function readStored(): StoredMessage[] {
   }
 }
 
+/** Smoothly pins the transcript to the newest message whenever `trigger` changes. */
+function StickToLatest({ trigger }: { trigger: string }) {
+  const { scrollToBottom } = useStickToBottomContext();
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      void scrollToBottom({ animation: "smooth" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [trigger, scrollToBottom]);
+
+  return null;
+}
+
 /** Floating AI assistant, grounded in the NexWeb Solutions knowledge base. */
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -70,6 +86,27 @@ export function ChatWidget() {
   const [error, setError] = useState<string | null>(null);
   const [initialMessages, setInitialMessages] = useState<StoredMessage[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const composerRef = useRef<HTMLDivElement | null>(null);
+  const [composerHeight, setComposerHeight] = useState(0);
+
+  // Keep the panel above the Android/iOS virtual keyboard.
+  const { height: viewportHeight, keyboardInset } = useVisualViewport(open);
+
+  // Measure the composer so the scroll area always reserves room for it.
+  useEffect(() => {
+    const node = composerRef.current;
+    if (!node || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(() => setComposerHeight(node.offsetHeight));
+    observer.observe(node);
+    setComposerHeight(node.offsetHeight);
+    return () => observer.disconnect();
+  }, [open]);
+
+  const launcherGap = 88; // clears the floating launcher button
+  const bottomOffset = keyboardInset > 0 ? keyboardInset + 12 : launcherGap;
+  const panelMaxHeight = viewportHeight
+    ? Math.max(240, viewportHeight - bottomOffset - 16)
+    : undefined;
 
   useEffect(() => {
     setInitialMessages(readStored());
@@ -161,10 +198,14 @@ export function ChatWidget() {
           aria-label={`${BRAND.name} AI assistant`}
           className={cn(
             "fixed z-50 flex flex-col overflow-hidden border border-border bg-background",
-            "shadow-[var(--shadow-elevated)]",
-            "inset-x-3 bottom-22 max-h-[76vh] rounded-2xl",
-            "sm:inset-x-auto sm:right-4 sm:bottom-22 sm:h-[600px] sm:max-h-[76vh] sm:w-[400px]",
+            "shadow-[var(--shadow-elevated)] will-change-transform",
+            "inset-x-3 max-h-[76dvh] rounded-2xl",
+            "sm:inset-x-auto sm:right-4 sm:h-[600px] sm:max-h-[76dvh] sm:w-[400px]",
           )}
+          style={{
+            bottom: `calc(${bottomOffset}px + env(safe-area-inset-bottom, 0px))`,
+            ...(panelMaxHeight ? { maxHeight: `${panelMaxHeight}px` } : {}),
+          }}
         >
           <header className="flex items-center gap-3 border-b border-border bg-surface px-4 py-3">
             <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-accent text-accent-foreground">
@@ -195,8 +236,11 @@ export function ChatWidget() {
             </button>
           </header>
 
-          <Conversation className="flex-1">
-            <ConversationContent className="gap-3 px-3 py-4">
+          <Conversation className="min-h-0 flex-1 overscroll-contain [-webkit-overflow-scrolling:touch]">
+            <ConversationContent
+              className="gap-3 px-3 pt-4"
+              style={{ paddingBottom: 16, scrollPaddingBottom: composerHeight + 16 }}
+            >
               <Message from="assistant">
                 <MessageContent>
                   <MessageResponse>{GREETING}</MessageResponse>
@@ -249,11 +293,23 @@ export function ChatWidget() {
                   ))}
                 </ul>
               )}
+              <StickToLatest
+                trigger={`${messages.length}:${status}:${keyboardInset}:${composerHeight}`}
+              />
             </ConversationContent>
             <ConversationScrollButton />
           </Conversation>
 
-          <div className="border-t border-border bg-surface px-3 py-3">
+          <div
+            ref={composerRef}
+            className="shrink-0 border-t border-border bg-surface px-3 pt-3"
+            style={{
+              paddingBottom:
+                keyboardInset > 0
+                  ? 12
+                  : "calc(0.75rem + env(safe-area-inset-bottom, 0px))",
+            }}
+          >
             <PromptInput
               onSubmit={(_message, event) => {
                 event.preventDefault();
