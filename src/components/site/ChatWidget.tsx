@@ -278,6 +278,9 @@ export function ChatWidget() {
                   ))}
                 </ul>
               )}
+              <StickToLatest
+                trigger={`${messages.length}:${status}:${keyboardInset}:${composerHeight}`}
+              />
             </ConversationContent>
             <ConversationScrollButton />
           </Conversation>
