@@ -3,6 +3,7 @@ import { DefaultChatTransport } from "ai";
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageSquare, Phone, RotateCcw, Sparkle, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useStickToBottomContext } from "use-stick-to-bottom";
 
 import {
   Conversation,
