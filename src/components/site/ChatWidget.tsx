@@ -183,10 +183,14 @@ export function ChatWidget() {
           aria-label={`${BRAND.name} AI assistant`}
           className={cn(
             "fixed z-50 flex flex-col overflow-hidden border border-border bg-background",
-            "shadow-[var(--shadow-elevated)]",
-            "inset-x-3 bottom-22 max-h-[76vh] rounded-2xl",
-            "sm:inset-x-auto sm:right-4 sm:bottom-22 sm:h-[600px] sm:max-h-[76vh] sm:w-[400px]",
+            "shadow-[var(--shadow-elevated)] will-change-transform",
+            "inset-x-3 max-h-[76dvh] rounded-2xl",
+            "sm:inset-x-auto sm:right-4 sm:h-[600px] sm:max-h-[76dvh] sm:w-[400px]",
           )}
+          style={{
+            bottom: `calc(${bottomOffset}px + env(safe-area-inset-bottom, 0px))`,
+            ...(panelMaxHeight ? { maxHeight: `${panelMaxHeight}px` } : {}),
+          }}
         >
           <header className="flex items-center gap-3 border-b border-border bg-surface px-4 py-3">
             <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-accent text-accent-foreground">
